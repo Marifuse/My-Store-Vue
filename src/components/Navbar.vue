@@ -26,7 +26,7 @@
         </div>
 
         <div class="navbar-end">
-          <a class="navbar-item1" @click="showCart">
+          <a data-testId="cart" class="navbar-item1" @click="showCart">
             <span class="icon">
               <i class="mdi mdi-32px mdi-cart"></i>
               <span
@@ -116,20 +116,19 @@ nav {
   position: fixed;
 }
 a {
-  color: #FFFFFF;
+  color: rgb(255, 167, 233) !important;
   transition: .3s;
 }
 a:visited {
-  color: #FFFFFF;
+  color: rgb(255, 167, 233) !important;
 }
-
 a:hover {
   background-color: #FFFFFF !important;
   color: #51005D !important;
 }
 .navbar-item1 {
   width: 2.5em;
-  padding-top: 0.5em;
+  padding-top: 0.4em;
 }
 .mdi-cart {
   padding-left: 1.3em;
