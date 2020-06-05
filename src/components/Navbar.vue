@@ -79,7 +79,7 @@ export default {
   },
   data() {
     return {
-      displayMenu: true,
+      displayMenu: false,
     }
   },
   methods: {

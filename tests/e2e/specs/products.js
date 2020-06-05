@@ -2,7 +2,6 @@ describe('Products page', () => {
     it('Filters products list', () =>{
         // Visitar el hosting y ver el input y elementos
         cy.visit('/')
-        cy.get('.navbar-burger').click()
         cy.get('.column.is-4').should('have.length', 14)
 
         // Buscar casa
@@ -16,7 +15,6 @@ describe('Products page', () => {
 
     it('Añade productos al Carrito', () => {
         cy.visit('/')
-        cy.get('.navbar-burger').click()
         cy.get('input').clear()
         cy.get('.card button.is-pulled-right.is-danger').first().click()
         cy.get('.navbar-burger').click()
@@ -25,7 +23,6 @@ describe('Products page', () => {
 
     it('Elimina Productos del Carrito', () => {
         cy.visit('/')
-        cy.get('.navbar-burger').click()
         cy.get('.card button.is-pulled-right.is-danger').first().click()
         cy.get('.navbar-burger').click()
         cy.get('[data-testId="cart"]').click()
