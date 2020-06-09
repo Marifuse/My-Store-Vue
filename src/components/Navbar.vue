@@ -9,6 +9,7 @@
       <a role="button"
       class="navbar-burger burger" aria-label="menu" aria-expanded="false"
       data-target="navbarMenu"
+      :class="{ 'is-active': displayMenu }"
       @click="displayMenu = !displayMenu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -16,7 +17,7 @@
       </a>
     </div>
     <!--  -->
-    <div id="navbarMenu" class="navbar-menu" :style="displayMenuStyle">
+    <div id="navbarMenu" class="navbar-menu" :class="{ 'is-active': displayMenu }">
         <div class="navbar-start">
           <!--
           <a class="navbar-item">
@@ -44,7 +45,7 @@
                 <span class="icon">
                   <i class="mdi mdi-32px mdi-account"></i>
                 </span>
-                Usuario
+                <b>Bienvenid@ {{ getCurrentUser ? getCurrentUser.email : '' }}</b>
             </a>
 
             <div class="navbar-dropdown">
@@ -54,10 +55,13 @@
               <a class="navbar-item" @click="showCart">
                 Ver Carrito
               </a>
+              <router-link class="navbar-item" to="/create">
+                Crear Producto
+              </router-link>
               <hr class="navbar-divider">
               <a class="navbar-item" @click="logout">
                 Cerrar Sesión
-              </a>
+              </a>  
             </div>
           </div>
         </div>
@@ -68,6 +72,10 @@
 </template>
 
 <script>
+import Firebase from 'firebase';
+// import firebaseConfig from '@/firebase';
+// Firebase.initializeApp(firebaseConfig);
+
 export default {
   name: '',
   components: {},
@@ -88,16 +96,19 @@ export default {
       this.$store.dispatch('updateShowCart', true)
     },
     logout() {
-      this.$store.dispatch('updateUser', undefined)
-      this.$router.push('/')
+      Firebase.auth().signOut().then(() => {
+          this.$router.push('login')
+          this.$store.dispatch('updateUser', false)
+          this.displayMenu = false
+      })  
     }
   },
   computed: {
-    displayMenuStyle() {
-      return { display: this.displayMenu ? 'block' : 'none' }
-    },
     isLoggedIn() {
       return this.$store.getters.isLoggedIn
+    },
+    getCurrentUser() {
+      return Firebase.auth().currentUser ? Firebase.auth().currentUser : ''
     }
   },
   watch: {},

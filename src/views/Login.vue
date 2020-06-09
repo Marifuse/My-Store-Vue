@@ -50,7 +50,10 @@
 </template>
 
 <script>
-import { Auth } from "../services/Auth";
+import Firebase from 'firebase';
+// import { Auth } from "../services/Auth";
+// import { rejects } from 'assert';
+
 export default {
   name: '',
   components: {},
@@ -70,17 +73,22 @@ export default {
       this.formHasErrors = this.credentials.email === '' || this.credentials.password === ''
       if(!this.formHasErrors) {
         // try login
-        Auth.login(this.credentials)
-        .then(response => {
-          let user = response.data
-          this.$store.dispatch('updateUser', user)
-          this.$router.push('/')
-        })
-        .catch(error => {
-          alert(error)
-        })
+        // Auth.login(this.credentials)
+        Firebase.auth()
+              .signInWithEmailAndPassword(
+                this.credentials.email,
+                this.credentials.password
+              )
+              .then(() => {
+              let user = this.credentials.email
+              this.$store.dispatch('updateUser', user)
+              this.$router.push('/')
+             })
+              .catch(error => {
+              alert(error)
+              })
+          }
       }
-    }
   },
   computed: {},
   watch: {},

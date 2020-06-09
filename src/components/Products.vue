@@ -33,13 +33,13 @@
         <div class="card has-equal-height">
           <div class="image-card">
             <div class="image has-spacing image is-16by9">
-              <img alt="product" :src="'/' + p.img">
+              <img alt="product" :src="p.data.picture">
             </div>
           </div>
           <div class="card-content">
             <div class="content">
-              <h3 class="title">{{ p.name }}</h3>
-              <p class="subtitle">$ {{ p.price * p.qty }}</p>
+              <h3 class="title">{{ p.data.name }}</h3>
+              <p class="subtitle">$ {{ parseInt(p.data.price) }}</p>
               <!-- <div class="has-spacing-bottom"> -->
                 <!-- <div class="has-spacing-bottom">
                   <span class="tag is-medium">tortor</span>
@@ -68,14 +68,13 @@
 </template>
 
 <script>
-import { Products } from "../services/API";
+import {mapState} from 'vuex';
 
 export default {
   components: {},
   props: {},
   data() {
     return {
-      products: [],
       search: '',
     }
   },
@@ -100,24 +99,17 @@ export default {
     }
   },
   computed: {
+    ...mapState(['products']),
     computedProductList() {
+      console.log(this.products)
       return this.products.filter(p => {
-        return p.name.toLowerCase().includes(this.search.toLowerCase())
+        return p.data.name.toLowerCase().includes(this.search.toLowerCase())
       })
     }
   },
   watch: {},
   created() {
-    // Pull products from Product service
-    Products.all().then(response => {
-      response.data.forEach(p => {
-        p['qty'] = 1
-        this.products.push(p)
-      })
-    })
-    .catch(error => {
-      alert(error.message)
-    })
+    this.$store.dispatch('getProducts')
   },
   mounted() {}
 }

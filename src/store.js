@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -25,6 +26,8 @@ function newCart() {
 
 export default new Vuex.Store({
   state: {
+    products: [],
+    loading: false,
     // User
     currentUser: getFromStorage('user') || undefined,
     // Cart
@@ -32,6 +35,13 @@ export default new Vuex.Store({
     showCart: false,
   },
   mutations: {
+    LOADING_PRODUCTS(state) {
+      state.loading = !state.loading
+    },
+    GET_PRODUCTS(state, products) {
+      state.products = products
+      state.loading = false
+    },
     // User
     UPDATE_CURR_USER(state, user) {
       state.currentUser = user
@@ -115,6 +125,14 @@ export default new Vuex.Store({
           commit('UPDATE_SHOW_CART', !!val) // !! double-negation for Boolen casting
           resolve(true)
         } catch(e) { reject(e) }
+      })
+    },
+    getProducts({commit}) {
+      commit('LOADING_PRODUCTS')
+      axios.get('https://us-central1-tddg3-b2b86.cloudfunctions.net/products/products', 
+      { headers: { "Content-type": "text/plain"}}).then((accept) => {
+        let data = accept.data;
+        commit('GET_PRODUCTS', data)
       })
     }
   },
