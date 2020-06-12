@@ -8,9 +8,17 @@ router.use(cors({origin: true}))
 router.get("/product/:id", async (req, res) => {
   const product = await admin
     .firestore()
-    .collection("products")
+    .collection("productos")
     .doc(req.params.id)
-    .get();
+    .get().then((doc) => {
+        if (doc.exists) {
+            console.log('Document data', doc.data());
+            return doc.data()
+        } else {
+            console.log('No such Document!');
+            return {}
+        }
+    });
   res.send(product);
 });
 router.get("/products", async (req, res) => {

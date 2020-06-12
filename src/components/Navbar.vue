@@ -56,7 +56,9 @@
                 Ver Carrito
               </a>
               <router-link class="navbar-item" to="/create">
+              <span @click="displayMenu = !displayMenu">
                 Crear Producto
+              </span>
               </router-link>
               <hr class="navbar-divider">
               <a class="navbar-item" @click="logout">
@@ -120,7 +122,7 @@ export default {
 <style lang="scss" scoped>
 nav {
   width: 100%;
-  height: 3.25rem;
+  height: 3.3rem;
   font-size: 1.5em;
   font-weight: 700;
   background-color: rgb(190, 0, 79);

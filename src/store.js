@@ -33,6 +33,7 @@ export default new Vuex.Store({
     // Cart
     shoppingCart: getFromStorage('cart') || newCart(),
     showCart: false,
+    edit: false
   },
   mutations: {
     LOADING_PRODUCTS(state) {
@@ -83,6 +84,9 @@ export default new Vuex.Store({
     UPDATE_SHOW_CART(state, value) {
       state.showCart = value
     },
+    UPDATE_EDIT(state) {
+      state.edit = !state.edit
+    }
   },
   actions: {
     // User
@@ -134,6 +138,9 @@ export default new Vuex.Store({
         let data = accept.data;
         commit('GET_PRODUCTS', data)
       })
+    },
+    updateEdit({commit}) {
+      commit('UPDATE_EDIT')
     }
   },
   getters: {
