@@ -39,10 +39,12 @@
             <!-- field submit -->
             <div class="field">
               <button class="button is-danger is-pulled-right" @click="login">Acceder</button>
+              <router-link to="/home" class="button is-dark">Volver a Home</router-link>
             </div>
             <div class="is-clearfix"></div>
           </form>
         </div>
+        
       </div>
       <div class="column is-one-third"></div>
     </div>
@@ -82,6 +84,7 @@ export default {
               .then(() => {
               let user = this.credentials.email
               this.$store.dispatch('updateUser', user)
+              alert("Hola, bienvenid@ a My Store")
               this.$router.push('/')
              })
               .catch(error => {
