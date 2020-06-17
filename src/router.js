@@ -26,9 +26,6 @@ const router = new Router({
       path: '/home',
       name: 'home',
       component: Home,
-      meta: {
-        requireLogin: true
-      }
     },
     {
       path: '/login',
@@ -38,7 +35,10 @@ const router = new Router({
     {
       path: '/create',
       name: 'Create',
-      component: Create
+      component: Create,
+      meta: {
+        requireLogin: true
+      }
     }
   ]
 })
@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
     let authRequired = to.matched.some(route => route.meta.requireLogin)
     console.log(user)
     if(!user && authRequired) {
-      next('login') 
+      next('home') 
     } else {
       next()
     }

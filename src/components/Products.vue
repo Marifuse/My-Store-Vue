@@ -5,10 +5,10 @@
         <div class="container">
           <div style="display: inline-block;">
             <h1 class="title">
-              Nuestros Productos
+              Nuestros Productos Anime
             </h1>
             <h2 class="subtitle">
-              Elige lo que tú quieras 
+              Elige lo que tú quieras 🌸 
             </h2>
           </div>
           <div class="is-pulled-right" style="display: inline-block;">
