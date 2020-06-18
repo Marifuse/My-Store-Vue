@@ -32,6 +32,6 @@ export default {
     color: #FFFFFF;
     text-align: center;
     padding: 1em;
-    margin-top: 2em;
+    margin-top: 1em;
   }
 </style>
