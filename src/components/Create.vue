@@ -89,6 +89,10 @@ export default {
             {headers:{'content-type':'application/json'}})
             .then((response) => {
                 console.log(response);
+                this.name = ""
+                this.picture = ""
+                this.price = ""
+                this.id = ""
                 this.$store.dispatch('getProducts')
             })
             .catch(function(error) {
