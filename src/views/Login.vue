@@ -44,7 +44,6 @@
             <div class="is-clearfix"></div>
           </form>
         </div>
-        
       </div>
       <div class="column is-one-third"></div>
     </div>
@@ -53,8 +52,6 @@
 
 <script>
 import Firebase from 'firebase';
-// import { Auth } from "../services/Auth";
-// import { rejects } from 'assert';
 
 export default {
   name: '',
@@ -76,22 +73,22 @@ export default {
       if(!this.formHasErrors) {
         // try login
         // Auth.login(this.credentials)
-        Firebase.auth()
-              .signInWithEmailAndPassword(
-                this.credentials.email,
-                this.credentials.password
-              )
-              .then(() => {
-              let user = this.credentials.email
-              this.$store.dispatch('updateUser', user)
-              alert("Hola, bienvenid@ a My Store")
-              this.$router.push('/')
-             })
-              .catch(error => {
-              alert(error)
-              })
-          }
+      Firebase.auth()
+        .signInWithEmailAndPassword(
+          this.credentials.email,
+          this.credentials.password
+        )
+        .then(() => {
+        let user = this.credentials.email
+        this.$store.dispatch('updateUser', user)
+        alert("Hola, bienvenid@ a My Store")
+        this.$router.push('/')
+        })
+        .catch(error => {
+        alert(error)
+        })
       }
+    }
   },
   computed: {},
   watch: {},

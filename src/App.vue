@@ -12,6 +12,7 @@
 </template>
 
 <script>
+// Importación del componente navbar
 import Navbar from '@/components/Navbar.vue'
 
 export default {
@@ -20,7 +21,6 @@ export default {
   },
 }
 </script>
-
 
 <style lang="scss">
   body {

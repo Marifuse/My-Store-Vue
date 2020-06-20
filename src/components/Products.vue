@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- Cabecera del la Pagina -->
     <section class="hero is-primary is-bold">
       <div class="hero-body">
         <div class="container">
@@ -12,8 +13,6 @@
             </h2>
           </div>
           <div class="is-pulled-right" style="display: inline-block;">
-            <!-- <label for="searchBox">Buscar </label>
-            <input type="text" id="searchBox" v-model="search"/> -->
             <div class="field">
               <p class="control has-icons-left">
                 <input class="input" type="text" placeholder="Escribe aquí" v-model="search">
@@ -22,16 +21,17 @@
                 </span>
               </p>
             </div>
-            <!--  -->
           </div>
         </div>
       </div>
     </section>
+    <!-- Sección de las cards -->
     <div class="columns is-multiline">
       <div class="column is-4 cards-container" v-for="p in computedProductList" :key="p.id">
         <!-- Item -->
         <div class="card has-equal-height">
           <div class="image-card">
+            <!-- Imagen del producto -->
             <div class="image has-spacing image is-16by9">
               <img alt="product" :src="p.data.picture">
             </div>
@@ -40,21 +40,15 @@
             <div class="content">
               <h3 class="title">{{ p.data.name }}</h3>
               <p class="subtitle">$ {{ parseInt(p.data.price * p.qty) }}</p>
-              <!-- <div class="has-spacing-bottom"> -->
-                <!-- <div class="has-spacing-bottom">
-                  <span class="tag is-medium">tortor</span>
-                  <span class="tag is-medium">suscipit</span>
-                  <span class="tag is-medium">Vivamus</span>
-                </div> -->
-              <!-- </div> -->
-              <!-- <p></p> -->
+              <!-- Argumento del producto -->
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada.</p>
-              <!-- <p></p> -->
+              <!-- Agrega y quita valor/precio del producto -->
               <div class="counter">
                 <button @click="decrQty(p.id)" :disabled="p.qty === 1"><i class="mdi mdi-minus"></i></button>
                 {{ p.qty }}
                 <button @click="incrQty(p.id)"><i class="mdi mdi-plus"></i></button>
               </div>
+              <!-- Boton para agregar al carro de compras -->
               <button @click="addToCart(p)" class="button is-pulled-right is-danger">
                 <i class="mdi mdi-cart"></i>
               </button>
@@ -62,13 +56,13 @@
             </div>
           </div>
         </div>
-      </div> <!-- End Item  -->
+      </div> 
     </div>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   components: {},
@@ -79,10 +73,12 @@ export default {
     }
   },
   methods: {
+    // Metodo de incremento
     incrQty(id) {
       let idx = this.products.map(p => p.id).indexOf(id)
       this.products[idx].qty++
     },
+    // Metodo de disminucion
     decrQty(id) {
       let idx = this.products.map(p => p.id).indexOf(id)
       // console.log('decr on ', this.products[idx])
@@ -90,6 +86,7 @@ export default {
         this.products[idx].qty--
       }
     },
+    // Agregar al carro
     addToCart(product) {
       // push a copy of product to the cart
       let p = JSON.parse(JSON.stringify(product))
