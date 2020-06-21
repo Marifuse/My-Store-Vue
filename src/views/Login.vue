@@ -3,16 +3,17 @@
     <div class="columns">
       <div class="column is-one-third"></div>
       <div class="column is-one-third">
+        <!-- Sección de formulario Login -->
         <div class="login-container card">
           <form>
-            <!-- Field email -->
+            <!-- Error -->
             <div class="field">
-              <!-- Error -->
               <span v-if="formHasErrors" class="has-text-danger">
                 <i class="mdi mdi-alert"></i>
                 Usuario o Contraseña incorrectos, Intente nuevamente.
               </span>
             </div>
+            <!-- Field email -->
             <div class="field">
               <label class="label">Email</label>
               <div class="control has-icons-left has-icons-right">

@@ -4,7 +4,14 @@
       <div class="column is-one-third"></div>
         <!-- Sección del formulario para agregar producto -->
         <section class="section-form">
-          <div class="form-create">
+          <form> 
+            <div class="form-create">
+              <div class="field">
+              <span v-if="formHasErrors" class="has-text-danger">
+                <i class="mdi mdi-alert"></i>
+                Ingrese Información Válida 💔
+              </span>
+            </div>
             <h2 class="title-form">Agrega un Nuevo Producto</h2>
             <input class="input inp-form" type="text" v-model="name" placeholder="Ingrese Nombre del Producto">
             <br><br>
@@ -14,8 +21,9 @@
             <br><br>
             <button class="button is-danger btn-input" @click="createProduct">Añadir</button>
             <button class="button is-dark btn-input" v-if="edit" @click="updateProduct(id)">Actualizar</button>
-          </div>
-        </section>    
+            </div>
+          </form>
+        </section>   
       <div class="column is-one-third"></div>
     </div>
     <div class="columns">
@@ -79,7 +87,8 @@ export default {
       name: '',
       picture: '',
       price: '',
-      id: undefined
+      id: undefined,
+      formHasErrors: false
     }
   },
   methods: {
@@ -92,26 +101,31 @@ export default {
 
     // Acción para Crear un producto
     // El método POST se usa para enviar peticiones de cambios de estados como puede ser una inserción de un recurso
-    createProduct() {
+    createProduct(e) {
+      // Esto hace que si el formulario no tiene datos, avise al usuario que debe ingresar información
+      e.preventDefault()
+      this.formHasErrors = this.name === '' || this.picture === '' || this.price === ''
       let result = {
         name: this.name,
         picture: this.picture,
         price: this.price
       }
-      console.log(result)
-      axios.post('https://us-central1-tddg3-b2b86.cloudfunctions.net/products/product', result, 
-      {headers:{'content-type':'application/json'}})
-      .then((response) => {
-        console.log(response);
-        this.name = ""
-        this.picture = ""
-        this.price = ""
-        this.id = ""
-        this.$store.dispatch('getProducts')
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+      if (!this.formHasErrors) {
+        console.log(result)
+        axios.post('https://us-central1-tddg3-b2b86.cloudfunctions.net/products/product', result, 
+        {headers:{'content-type':'application/json'}})
+        .then((response) => {
+          console.log(response);
+          this.name = ""
+          this.picture = ""
+          this.price = ""
+          this.id = ""
+          this.$store.dispatch('getProducts')
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+      }  
     },
     // Acción para Eliminar un producto
     // El método DELETE borra un recurso específico (boton que se encuentra en la tabla)

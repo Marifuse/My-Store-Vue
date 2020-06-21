@@ -33,7 +33,7 @@ export default new Vuex.Store({
     // Cart
     shoppingCart: getFromStorage('cart') || newCart(),
     showCart: false,
-    edit: false
+    edit: false,
   },
   mutations: {
     LOADING_PRODUCTS(state) {
