@@ -1,37 +1,36 @@
 <template>
   <div id="app">
-    <navbar :brand="'My Store'"/>
-    <router-view/>
-    <!-- Cierre o Footer -->
-    <footer class="footer-container">
-      <div class="container">
-        <h6 class="title-footer">Todos los derechos reservados®</h6>
+    <navbar :brand="'Sakura Store'"/>
+    <div class="modal" :class="{'is-active': load}">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <progress class="progress is-danger" max="100">60%</progress>
       </div>
-    </footer>
+    </div>
+    <router-view/>
+    <Footer/>
   </div>
 </template>
 
 <script>
 // Importación del componente navbar
 import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
+import { mapState } from 'vuex'
 
 export default {
   components: {
     Navbar,
+    Footer
   },
+  computed: {
+    ...mapState(['load'])
+  }
 }
 </script>
 
 <style lang="scss">
   body {
     background-color: #000000;
-  }
-  // Footer
-  .footer-container {
-    background-color: rgb(190, 0, 79);
-    color: #FFFFFF;
-    text-align: center;
-    padding: 1em;
-    margin-top: 1em;
   }
 </style>

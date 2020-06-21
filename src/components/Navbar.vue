@@ -19,13 +19,7 @@
     <!--  -->
     <div id="navbarMenu" class="navbar-menu" :class="{ 'is-active': displayMenu }">
         <div class="navbar-start">
-          <!--
-          <a class="navbar-item">
-            Home
-          </a>
-          -->
         </div>
-
         <div class="navbar-end">
           <a data-testId="cart" class="navbar-item1" @click="showCart">
             <span class="icon">

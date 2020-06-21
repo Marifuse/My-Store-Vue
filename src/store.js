@@ -34,6 +34,7 @@ export default new Vuex.Store({
     shoppingCart: getFromStorage('cart') || newCart(),
     showCart: false,
     edit: false,
+    load: false
   },
   mutations: {
     LOADING_PRODUCTS(state) {
@@ -47,6 +48,8 @@ export default new Vuex.Store({
       })
       state.loading = false
     },
+    SET_LOADING(state) { state.load = true },
+    UNSET_LOADING(state) { state.load = false },
     // User
     UPDATE_CURR_USER(state, user) {
       state.currentUser = user
@@ -136,12 +139,15 @@ export default new Vuex.Store({
       })
     },
     getProducts({commit}) {
+      commit('SET_LOADING')
       commit('LOADING_PRODUCTS')
       axios.get('https://us-central1-tddg3-b2b86.cloudfunctions.net/products/products', 
       { headers: { "Content-type": "text/plain"}}).then((accept) => {
         let data = accept.data;
         commit('GET_PRODUCTS', data)
-      })
+      }).finally(() => {
+        commit('UNSET_LOADING')
+      }) 
     },
     updateEdit({commit}) {
       commit('UPDATE_EDIT')

@@ -39,6 +39,11 @@ const router = new Router({
       meta: {
         requireLogin: true
       }
+    },
+    {
+      path: '*',
+      name: 'NotFound',
+      component: () => import(/* webpackChunkName: "not found" */ './views/NotFound')
     }
   ]
 })

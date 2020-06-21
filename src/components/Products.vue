@@ -14,6 +14,7 @@
           </div>
           <div class="is-pulled-right" style="display: inline-block;">
             <div class="field">
+              <br>
               <p class="control has-icons-left">
                 <input class="input" type="text" placeholder="Escribe aquí" v-model="search">
                 <span class="icon is-small is-left">
