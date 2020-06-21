@@ -17,9 +17,6 @@ const router = new Router({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
@@ -48,6 +45,8 @@ const router = new Router({
   ]
 })
 
+/* Guard que pide autenticación para entrar a lugares que no son públicos. Si no se está logeado, no tiene acceso a
+los sitios con privilegios de administrador o usuario */
 router.beforeEach((to, from, next) => {
     let user = Firebase.auth().currentUser;
     let authRequired = to.matched.some(route => route.meta.requireLogin)

@@ -50,7 +50,6 @@
                   <span class="icon is-small is-left b-icon">
                     <i class="mdi mdi-pencil-outline"></i>
                   </span>Editar</button>
-                  <!-- @click="editItem(p['.key'])"  -->
                 <div class="is-clearfix"></div>
               </td>
               <td>
@@ -58,7 +57,6 @@
                   <span class="icon is-small is-left b-icon">
                     <i class="mdi mdi-delete-forever"></i>
                   </span>Borrar</button>
-                  <!-- @click="deleteItem(p['.key'])" -->
                 <div class="is-clearfix"></div>
               </td>
             </tr>

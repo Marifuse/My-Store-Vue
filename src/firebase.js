@@ -1,3 +1,4 @@
+// Sección donde se exporta el proyecto Firebase que fue creado en la nube
 export default {
   apiKey: "AIzaSyBf_dRD3nQiaLmu4lnukW-GaqWNlNWSEBU",
   authDomain: "tddg3-b2b86.firebaseapp.com",
