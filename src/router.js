@@ -42,7 +42,7 @@ const router = new Router({
     {
       path: '*', // Este tipo de path con asterisco se usa para generar un not found o error 404
       name: 'NotFound',
-      component: () => import(/* webpackChunkName: "not found" */ './views/NotFound')
+      component: () => import(/* webpackChunkName:"notfound" */ './views/NotFound') //Jamas debe ir con espacios
     }
   ]
 }) //Tambien las rutas pueden contener hijos contenidos en las vistas para cargar componentes (vistas normales o lazy)

@@ -111,17 +111,13 @@ export default {
       if (!this.formHasErrors) {
         axios.post('https://us-central1-tddg3-b2b86.cloudfunctions.net/products/product', result, 
         {headers:{'content-type':'application/json'}})
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           this.name = ""
           this.picture = ""
           this.price = ""
           this.id = ""
           this.$store.dispatch('getProducts')
         })
-        .catch(function(error) {
-          console.log(error);
-        });
       }  
     },
     // Acción para Eliminar un producto
@@ -172,9 +168,6 @@ export default {
         this.id = ""
         this.$store.dispatch('getProducts')
       })
-      .catch(function(error) {
-        console.log(error);
-      });
     }      
   },
   computed: {
