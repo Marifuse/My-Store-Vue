@@ -29,6 +29,21 @@ npm run serve
 npm run build
 ```
 
+### Firebase Deploy Hosting
+```
+firebase deploy --only hosting
+```
+
+### Firebase Deploy Functions
+```
+firebase deploy --only functions
+```
+
+### Run Firebase (init)
+```
+firebase init
+```
+
 ### Run your tests
 ```
 npm run test
@@ -58,4 +73,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Author
 
-**_María Jesús Fuenzalida S_**
+**_María Jesús Fuenzalida S._**
