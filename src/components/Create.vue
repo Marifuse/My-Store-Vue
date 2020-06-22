@@ -63,7 +63,7 @@
           </tbody>
         </table>
         <!-- Boton que permite volver al Home o vista principal -->
-        <router-link to="/home" class="button is-danger is-outlined">
+        <router-link to="/home" class="button is-danger">
           Volver a Home
         </router-link>
       </section>
