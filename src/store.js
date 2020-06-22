@@ -152,7 +152,6 @@ export default new Vuex.Store({
     },
     // Acción que agrega productos al carrito con sus valores segun corresponda
     updateShowCart({commit}, val) {
-      console.log('setting showCart to ', val)
       return new Promise((resolve, reject) => {
         try {
           commit('UPDATE_SHOW_CART', !!val) // !! double-negation for Boolen casting

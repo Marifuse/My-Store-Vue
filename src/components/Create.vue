@@ -109,7 +109,7 @@ export default {
         price: this.price
       }
       if (!this.formHasErrors) {
-        console.log(result)
+
         axios.post('https://us-central1-tddg3-b2b86.cloudfunctions.net/products/product', result, 
         {headers:{'content-type':'application/json'}})
         .then((response) => {
@@ -163,7 +163,7 @@ export default {
         picture: this.picture,
         price: this.price
       }
-      console.log(result)
+      // console.log(result)
       axios.put(`https://us-central1-tddg3-b2b86.cloudfunctions.net/products/product/${id}`,result, 
       {headers:{'content-type':'application/json'}})
       .then(() => {

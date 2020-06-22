@@ -1,3 +1,4 @@
+// Se debe importar el componente del cual se debe hacer testeo, más el VUEX y VUE Router, mas los mocks (muñecos de prueba)
 import { expect } from 'chai'
 import { mount, createLocalVue } from '@vue/test-utils'
 
@@ -16,7 +17,9 @@ localVue.use(VueRouter)
 const store = new Vuex.Store(myStore)
 const router = new VueRouter(myRoutes)
 
+// descripcion donde se habla de qué componente se está trabajando
 describe('Navbar.vue', () => {
+  // Primer hito (se ve si en la barra menú no hay usuario)
   it('muestra menu de login si no hay usuario', () => {
     // store.dispatch('updateUser', undefined)
     const wrapper = mount(Navbar, {

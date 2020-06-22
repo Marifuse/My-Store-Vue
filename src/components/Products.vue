@@ -28,7 +28,7 @@
     </section>
     <!-- Sección de las cards -->
     <div class="columns is-multiline">
-      <div class="column is-4 cards-container" v-for="p in computedProductList" :key="p.id">
+      <div class="column is-4" id="cards-container" v-for="p in computedProductList" :key="p.id">
         <!-- Item -->
         <div class="card has-equal-height">
           <div class="image-card">
@@ -99,7 +99,7 @@ export default {
   computed: {
     ...mapState(['products']),
     computedProductList() {
-      console.log(this.products)
+      // console.log(this.products)
       return this.products.filter(p => {
         return p.data.name.toLowerCase().includes(this.search.toLowerCase())
       })
@@ -131,7 +131,7 @@ export default {
   }
 }
 // Sección cartas 
-.cards-container {
+#cards-container {
   margin-top: 1em;
 }
 </style>
