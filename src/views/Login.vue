@@ -83,7 +83,7 @@ export default {
         .then(() => {
         let user = this.credentials.email
         this.$store.dispatch('updateUser', user)
-        alert("Hola, bienvenid@ a My Store")
+        alert("Hola, bienvenid@ a Sakura Store")
         this.$router.push('/')
         })
         .catch(error => {

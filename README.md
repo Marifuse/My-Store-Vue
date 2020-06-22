@@ -74,3 +74,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## Author
 
 **_María Jesús Fuenzalida S._**
+
+### June 2020
