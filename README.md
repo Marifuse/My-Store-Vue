@@ -51,7 +51,7 @@ npm run test:unit
 
 ## Link Deploy Hosting
 
-_Falta agregarlo por un error_
+[Sakura Store](https://tddg3-b2b86.web.app).
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
