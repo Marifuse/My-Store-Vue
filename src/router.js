@@ -3,7 +3,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Firebase from 'firebase'
 import Home from './views/Home.vue'
-import Create from './components/Create.vue'
 
 Vue.use(Router) //(Uso de Router)
 
@@ -34,7 +33,7 @@ const router = new Router({
     {
       path: '/create',
       name: 'Create',
-      component: Create,
+      component: () => import(/* webpackChunkName: "create" */ './components/Create.vue'),
       meta: {
         requireLogin: true // El meta tiene relación con la función guardia (se representa con una respuesta booleana)
       }
