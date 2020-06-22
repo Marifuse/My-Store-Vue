@@ -1,3 +1,4 @@
+// Testeo de la vista de productos
 describe('Products page', () => {
   it('Filters products list', () =>{
     // Visitar el hosting y ver el input y elementos

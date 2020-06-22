@@ -1,3 +1,4 @@
+// Testeo del Home
 describe('Landing Page', () => {
   it('Toggles the hamburger button', () => {
     cy.viewport('iphone-6')

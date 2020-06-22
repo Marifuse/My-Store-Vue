@@ -1,3 +1,4 @@
+// Testeo del Login
 describe('Products page', () => {
   it('redirecciona al Home si el logeo es Exitoso', () => {
     cy.visit('http://localhost:8080/login')
