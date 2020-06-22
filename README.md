@@ -8,6 +8,10 @@ To see other projects, you can go to the link https://github.com/Marifuse
 
 _Keywords: Vue, Vue Router, VUEX, Testing, Firebase, Framework, Bulma, CSS, JavaScript, HTML, Git, Repository._
 
+## Page View
+
+![Home](public/capture-1.png "Capture 1")
+
 ## Steps to run the Project
 
 ## Project setup

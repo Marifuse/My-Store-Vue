@@ -1,4 +1,5 @@
 <template>
+<!-- Modal que aparece cuando se quiere comprar el producto -->
   <div class="modal" v-bind:class="{'is-active':  showModal}">
     <div class="modal-background"></div>
     <div class="modal-card">

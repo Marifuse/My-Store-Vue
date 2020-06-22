@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <navbar :brand="'Sakura Store'"/>
+    <!-- Modal del Progres que aparece mientras carga la página -->
     <div class="modal" :class="{'is-active': load}">
       <div class="modal-background"></div>
       <div class="modal-content">

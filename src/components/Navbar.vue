@@ -16,7 +16,7 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
-    <!--  -->
+    <!-- Cart -->
     <div id="navbarMenu" class="navbar-menu" :class="{ 'is-active': displayMenu }">
         <div class="navbar-start">
         </div>
@@ -31,6 +31,7 @@
               </span>
             </span>
           </a>
+          <!-- Login -->
           <router-link v-if="!isLoggedIn" to="/login" class="navbar-item">
             Login
           </router-link>
@@ -41,7 +42,7 @@
                 </span>
                 <b>Bienvenid@ {{ getCurrentUser ? getCurrentUser.email : '' }}</b>
             </a>
-
+            <!-- Menu del usuario logeado -->
             <div class="navbar-dropdown">
               <a class="navbar-item">
                 Preferencias
@@ -62,15 +63,12 @@
           </div>
         </div>
       </div>
-    <!--  -->
-    </div> <!-- container -->
+    </div>
   </nav>
 </template>
 
 <script>
 import Firebase from 'firebase';
-// import firebaseConfig from '@/firebase';
-// Firebase.initializeApp(firebaseConfig);
 
 export default {
   name: '',
@@ -91,6 +89,7 @@ export default {
       event.preventDefault();
       this.$store.dispatch('updateShowCart', true)
     },
+    // Función que permite cerrar la sesión
     logout() {
       Firebase.auth().signOut().then(() => {
           this.$router.push('login')
@@ -114,6 +113,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// Navbar
 nav {
   width: 100%;
   height: 3.3rem;
@@ -122,6 +122,7 @@ nav {
   background-color: rgb(190, 0, 79);
   position: fixed;
 }
+// Hipervinculo (contiene router link)
 a {
   color: rgb(255, 167, 233) !important;
   transition: .3s;
