@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@mdi/font": "^3.9.97",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^2.6.11",
     "firebase": "^7.15.3",
     "firebase-functions": "^3.7.0",
